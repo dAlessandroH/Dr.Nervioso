@@ -4,16 +4,19 @@
 
 /* ── VARIABLES ── */
 :root {
-  --navy:        #090B2F;
-  --navy-mid:    #112240;
-  --navy-light:  #1a3355;
-  --accent:      #64d4a8;
-  --accent-dim:  #3ab88a;
-  --gold:        #c9a84c;
-  --text-light:  #e8edf5;
-  --text-muted:  #8fa3bc;
-  --card-bg:     #112240;
-  --card-border: rgba(100, 212, 168, 0.15);
+  --white: #ffffff;
+  --bg-light: #f8fafc;
+  --primary: #0ea5e9;
+  --primary-dark: #0369a1;
+  --primary-light: #e0f2fe;
+  --accent: #6ee7b7;
+  --accent-dark: #34d399;
+  --gold: #d97706;
+  --text-dark: #1e293b;
+  --text-light: #475569;
+  --text-muted: #94a3b8;
+  --card-bg: #ffffff;
+  --card-border: #e2e8f0;
 }
 
 /* ── RESET ── */
@@ -25,9 +28,9 @@
 
 /* ── BASE ── */
 body {
-  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  background: var(--navy);
-  color: var(--text-light);
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  background: var(--bg-light);
+  color: var(--text-dark);
   overflow-x: hidden;
 }
 
@@ -37,7 +40,7 @@ body {
   top: 0;
   left: 0;
   height: 3px;
-  background: var(--accent);
+  background: var(--primary);
   z-index: 9999;
   transition: width 0.1s;
 }
@@ -47,9 +50,9 @@ nav {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(10, 22, 40, 0.9);
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(100, 212, 168, 0.1);
+  border-bottom: 1px solid var(--card-border);
   padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
@@ -57,10 +60,11 @@ nav {
 }
 
 .nav-logo {
-  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   font-size: 1.1rem;
-  color: var(--accent);
+  color: var(--primary-dark);
   letter-spacing: 0.04em;
+  font-weight: 600;
 }
 
 .nav-links {
@@ -70,7 +74,7 @@ nav {
 }
 
 .nav-links a {
-  color: var(--text-muted);
+  color: var(--text-light);
   text-decoration: none;
   font-size: 0.9rem;
   font-weight: 400;
@@ -78,7 +82,7 @@ nav {
 }
 
 .nav-links a:hover {
-  color: var(--accent);
+  color: var(--primary);
 }
 
 /* ── HERO ── */
@@ -91,7 +95,7 @@ header {
   align-items: center;
   text-align: center;
   padding: 6rem 2rem;
-  background: radial-gradient(ellipse 80% 60% at 30% 20%, #090B2F 0%, var(--navy) 90%);
+  background: linear-gradient(180deg, var(--white) 0%, var(--bg-light) 100%);
   overflow: hidden;
 }
 
@@ -100,8 +104,8 @@ header::before {
   position: absolute;
   inset: 0;
   background-image:
-    radial-gradient(circle at 20% 50%, rgba(100, 212, 168, 0.04) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(201, 168, 76, 0.04) 0%, transparent 40%);
+    radial-gradient(circle at 20% 50%, rgba(14, 165, 233, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(14, 165, 233, 0.06) 0%, transparent 40%);
 }
 
 .brain-svg {
@@ -109,30 +113,34 @@ header::before {
   height: 600px;
   margin-bottom: 2.5rem;
   animation: float 5s ease-in-out infinite;
-  filter: drop-shadow(0 0 40px rgba(100, 212, 168, 0.25));
+  filter: drop-shadow(0 0 40px rgba(14, 165, 233, 0.2));
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50%       { transform: translateY(-14px); }
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-14px);
+  }
 }
 
 header h1 {
-  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   font-size: clamp(2.8rem, 6vw, 5.2rem);
   font-weight: 700;
   letter-spacing: -0.02em;
   line-height: 1.1;
   margin-bottom: 1rem;
-  background: linear-gradient(135deg, #e8edf5 40%, var(--accent) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--text-dark);
 }
 
 header p.subtitle {
   font-size: 1.15rem;
-  color: var(--text-muted);
+  color: var(--text-light);
   max-width: 540px;
   font-weight: 300;
   line-height: 1.7;
@@ -160,26 +168,28 @@ header p.subtitle {
 }
 
 .btn-primary {
-  background: var(--accent);
-  color: var(--navy);
+  background: var(--primary);
+  color: var(--white);
   border: none;
 }
 
 .btn-primary:hover {
-  background: #7ae4ba;
+  background: var(--primary-dark);
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(100, 212, 168, 0.3);
+  box-shadow: 0 8px 24px rgba(14, 165, 233, 0.3);
 }
 
 .btn-outline {
-  border: 1px solid rgba(100, 212, 168, 0.4);
-  color: var(--accent);
+  border: 1px solid var(--primary);
+  color: var(--primary);
   background: transparent;
 }
 
 .btn-outline:hover {
-  background: rgba(100, 212, 168, 0.08);
+  background: var(--primary);
+  color: var(--white);
   transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(14, 165, 233, 0.35);
 }
 
 /* ── STATS ROW ── */
@@ -199,19 +209,21 @@ header p.subtitle {
   text-align: center;
 }
 
-a:link{
-  color: white;
+a:link {
+  color: var(--primary);
 }
+
 a:visited {
-  color: white;
+  color: var(--primary-dark);
   background-color: transparent;
   text-decoration: none;
 }
+
 .stat-number {
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   font-size: 2.6rem;
   font-weight: 700;
-  color: var(--accent);
+  color: var(--primary-dark);
   line-height: 1;
   margin-bottom: 0.4rem;
 }
@@ -225,7 +237,7 @@ a:visited {
 
 .stat-divider {
   width: 1px;
-  background: rgba(100, 212, 168, 0.15);
+  background: var(--card-border);
   align-self: stretch;
 }
 
@@ -240,7 +252,7 @@ section {
   font-size: 0.75rem;
   font-weight: 500;
   letter-spacing: 0.18em;
-  color: var(--accent);
+  color: var(--primary);
   text-transform: uppercase;
   margin-bottom: 0.8rem;
 }
@@ -249,7 +261,7 @@ section {
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 600;
-  color: var(--text-light);
+  color: var(--text-dark);
   margin-bottom: 1.2rem;
   line-height: 1.2;
 }
@@ -284,7 +296,9 @@ section {
 .struct-card::before {
   content: '';
   position: absolute;
-  top: 0; left: 0; right: 0;
+  top: 0;
+  left: 0;
+  right: 0;
   height: 3px;
   background: linear-gradient(90deg, var(--card-color-a), var(--card-color-b));
   border-radius: 16px 16px 0 0;
@@ -292,8 +306,8 @@ section {
 
 .struct-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
-  border-color: rgba(100, 212, 168, 0.35);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+  border-color: var(--primary);
 }
 
 .struct-card .icon {
@@ -305,18 +319,18 @@ section {
   justify-content: center;
   margin-bottom: 1.2rem;
   font-size: 1.5rem;
-  background: rgba(100, 212, 168, 0.08);
+  background: var(--primary-light);
 }
 
 .struct-card h3 {
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   font-size: 1.25rem;
   margin-bottom: 0.6rem;
-  color: var(--text-light);
+  color: var(--text-dark);
 }
 
 .struct-card p {
-  color: var(--text-muted);
+  color: var(--text-light);
   font-size: 0.88rem;
   line-height: 1.7;
   font-weight: 300;
@@ -329,14 +343,14 @@ section {
   border-radius: 50px;
   font-size: 0.75rem;
   font-weight: 500;
-  background: rgba(100, 212, 168, 0.1);
-  color: var(--accent);
+  background: var(--primary-light);
+  color: var(--primary-dark);
   letter-spacing: 0.04em;
 }
 
 /* ── LÓBULOS SECTION ── */
 .lobulos-section {
-  background: linear-gradient(180deg, transparent 0%, rgba(17, 34, 64, 0.5) 50%, transparent 100%);
+  background: linear-gradient(180deg, var(--bg-light) 0%, var(--white) 50%, var(--bg-light) 100%);
   max-width: 100%;
   padding: 6rem 0;
 }
@@ -371,15 +385,15 @@ section {
 
 .lobe-item:hover,
 .lobe-item.active {
-  border-color: var(--lobe-color, var(--accent));
-  background: rgba(100, 212, 168, 0.04);
+  border-color: var(--lobe-color, var(--primary));
+  background: var(--primary-light);
 }
 
 .lobe-item h4 {
   font-size: 0.95rem;
   font-weight: 500;
   margin-bottom: 0.3rem;
-  color: var(--lobe-color, var(--accent));
+  color: var(--lobe-color, var(--primary));
 }
 
 .lobe-item p {
@@ -399,13 +413,13 @@ section {
 #lobeInfoText {
   margin-top: 1.5rem;
   padding: 1.2rem 1.5rem;
-  background: rgba(10, 22, 40, 0.9);
-  border: 1px solid rgba(100, 212, 168, 0.2);
+  background: var(--primary-light);
+  border: 1px solid var(--primary);
   border-radius: 8px;
 }
 
 #lobeInfoText p {
-  color: rgba(232, 237, 245, 0.8);
+  color: var(--text-dark);
   font-size: 0.9rem;
   line-height: 1.6;
 }
@@ -421,7 +435,7 @@ section {
 }
 
 .cranial-table thead {
-  background: rgba(100, 212, 168, 0.1);
+  background: var(--primary-light);
 }
 
 .cranial-table th {
@@ -429,7 +443,7 @@ section {
   text-align: left;
   font-size: 0.8rem;
   font-weight: 500;
-  color: var(--accent);
+  color: var(--primary-dark);
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
@@ -437,19 +451,19 @@ section {
 .cranial-table td {
   padding: 0.9rem 1.5rem;
   font-size: 0.88rem;
-  color: var(--text-muted);
-  border-top: 1px solid rgba(255, 255, 255, 0.04);
+  color: var(--text-light);
+  border-top: 1px solid var(--card-border);
   transition: background 0.2s;
 }
 
 .cranial-table tbody tr:hover td {
-  background: rgba(100, 212, 168, 0.04);
-  color: var(--text-light);
+  background: var(--primary-light);
+  color: var(--text-dark);
 }
 
 .cranial-table td:first-child {
   font-weight: 500;
-  color: var(--text-light);
+  color: var(--text-dark);
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
@@ -462,9 +476,20 @@ section {
   letter-spacing: 0.03em;
 }
 
-.badge-s { background: rgba(100, 212, 168, 0.15); color: var(--accent); }
-.badge-m { background: rgba(201, 168, 76, 0.15);  color: var(--gold); }
-.badge-b { background: rgba(130, 100, 220, 0.15); color: #a78cda; }
+.badge-s {
+  background: var(--primary-light);
+  color: var(--primary-dark);
+}
+
+.badge-m {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.badge-b {
+  background: #e0e7ff;
+  color: #3730a3;
+}
 
 /* ── QUIZ ── */
 .quiz-section {
@@ -480,10 +505,10 @@ section {
 }
 
 .quiz-question {
-  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   font-size: 1.4rem;
   margin-bottom: 2rem;
-  color: var(--text-light);
+  color: var(--text-dark);
   line-height: 1.4;
 }
 
@@ -498,9 +523,9 @@ section {
 .quiz-opt {
   padding: 0.9rem 1.2rem;
   border-radius: 10px;
-  border: 1px solid rgba(100, 212, 168, 0.2);
-  background: var(--navy);
-  color: var(--text-light);
+  border: 1px solid var(--card-border);
+  background: var(--white);
+  color: var(--text-dark);
   font-size: 0.9rem;
   cursor: pointer;
   transition: all 0.2s;
@@ -509,20 +534,20 @@ section {
 }
 
 .quiz-opt:hover {
-  border-color: var(--accent);
-  background: rgba(100, 212, 168, 0.06);
+  border-color: var(--primary);
+  background: var(--primary-light);
 }
 
 .quiz-opt.correct {
   border-color: var(--accent);
-  background: rgba(100, 212, 168, 0.12);
-  color: var(--accent);
+  background: rgba(110, 231, 183, 0.2);
+  color: var(--accent-dark);
 }
 
 .quiz-opt.wrong {
-  border-color: #e85d5d;
-  background: rgba(232, 93, 93, 0.08);
-  color: #e85d5d;
+  border-color: #ef4444;
+  background: rgba(239, 68, 68, 0.1);
+  color: #dc2626;
 }
 
 .quiz-feedback {
@@ -537,21 +562,23 @@ section {
   border-radius: 50px;
   padding: 0.7rem 2rem;
   font-size: 0.9rem;
+  color: #0369a1;
 }
 
 /* ── FOOTER ── */
 footer {
-  border-top: 1px solid rgba(100, 212, 168, 0.1);
+  border-top: 1px solid var(--card-border);
   padding: 3rem 2rem;
   text-align: center;
   color: var(--text-muted);
   font-size: 0.85rem;
   font-weight: 300;
   line-height: 2;
+  background: var(--white);
 }
 
 footer span {
-  color: var(--accent);
+  color: var(--primary);
 }
 
 .footer-copy {
