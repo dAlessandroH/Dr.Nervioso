@@ -1,0 +1,595 @@
+/* ════════════════════════════════════════
+   NEUROATLAS — styles.css
+   ════════════════════════════════════════ */
+
+/* ── VARIABLES ── */
+:root {
+  --navy:        #090B2F;
+  --navy-mid:    #112240;
+  --navy-light:  #1a3355;
+  --accent:      #64d4a8;
+  --accent-dim:  #3ab88a;
+  --gold:        #c9a84c;
+  --text-light:  #e8edf5;
+  --text-muted:  #8fa3bc;
+  --card-bg:     #112240;
+  --card-border: rgba(100, 212, 168, 0.15);
+}
+
+/* ── RESET ── */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ── BASE ── */
+body {
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  background: var(--navy);
+  color: var(--text-light);
+  overflow-x: hidden;
+}
+
+/* ── PROGRESS BAR ── */
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: var(--accent);
+  z-index: 9999;
+  transition: width 0.1s;
+}
+
+/* ── NAVIGATION ── */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(10, 22, 40, 0.9);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(100, 212, 168, 0.1);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-logo {
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: 1.1rem;
+  color: var(--accent);
+  letter-spacing: 0.04em;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 400;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover {
+  color: var(--accent);
+}
+
+/* ── HERO ── */
+header {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 6rem 2rem;
+  background: radial-gradient(ellipse 80% 60% at 30% 20%, #090B2F 0%, var(--navy) 90%);
+  overflow: hidden;
+}
+
+header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 20% 50%, rgba(100, 212, 168, 0.04) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(201, 168, 76, 0.04) 0%, transparent 40%);
+}
+
+.brain-svg {
+  width: 600px;
+  height: 600px;
+  margin-bottom: 2.5rem;
+  animation: float 5s ease-in-out infinite;
+  filter: drop-shadow(0 0 40px rgba(100, 212, 168, 0.25));
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-14px); }
+}
+
+header h1 {
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: clamp(2.8rem, 6vw, 5.2rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #e8edf5 40%, var(--accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+header p.subtitle {
+  font-size: 1.15rem;
+  color: var(--text-muted);
+  max-width: 540px;
+  font-weight: 300;
+  line-height: 1.7;
+  margin-bottom: 3rem;
+}
+
+.cta-row {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* ── BOTONES ── */
+.btn {
+  padding: 0.8rem 2rem;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.25s;
+  letter-spacing: 0.03em;
+  display: inline-block;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: var(--navy);
+  border: none;
+}
+
+.btn-primary:hover {
+  background: #7ae4ba;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(100, 212, 168, 0.3);
+}
+
+.btn-outline {
+  border: 1px solid rgba(100, 212, 168, 0.4);
+  color: var(--accent);
+  background: transparent;
+}
+
+.btn-outline:hover {
+  background: rgba(100, 212, 168, 0.08);
+  transform: translateY(-2px);
+}
+
+/* ── STATS ROW ── */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.5rem;
+  margin: 5rem auto 0;
+  padding: 3rem 2rem;
+  background: var(--card-bg);
+  border-radius: 20px;
+  border: 1px solid var(--card-border);
+  max-width: 1200px;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+a:link{
+  color: white;
+}
+a:visited {
+  color: white;
+  background-color: transparent;
+  text-decoration: none;
+}
+.stat-number {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: 2.6rem;
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 0.4rem;
+}
+
+.stat-label {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+.stat-divider {
+  width: 1px;
+  background: rgba(100, 212, 168, 0.15);
+  align-self: stretch;
+}
+
+/* ── SECTIONS GENÉRICAS ── */
+section {
+  padding: 6rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+}
+
+.section-title {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 600;
+  color: var(--text-light);
+  margin-bottom: 1.2rem;
+  line-height: 1.2;
+}
+
+.section-desc {
+  color: var(--text-muted);
+  max-width: 560px;
+  font-size: 1rem;
+  line-height: 1.8;
+  margin-bottom: 3.5rem;
+  font-weight: 300;
+}
+
+/* ── STRUCTURES GRID ── */
+.structures-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.struct-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+}
+
+.struct-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--card-color-a), var(--card-color-b));
+  border-radius: 16px 16px 0 0;
+}
+
+.struct-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+  border-color: rgba(100, 212, 168, 0.35);
+}
+
+.struct-card .icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.2rem;
+  font-size: 1.5rem;
+  background: rgba(100, 212, 168, 0.08);
+}
+
+.struct-card h3 {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: 1.25rem;
+  margin-bottom: 0.6rem;
+  color: var(--text-light);
+}
+
+.struct-card p {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+.struct-card .tag {
+  display: inline-block;
+  margin-top: 1.2rem;
+  padding: 0.3rem 0.9rem;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  background: rgba(100, 212, 168, 0.1);
+  color: var(--accent);
+  letter-spacing: 0.04em;
+}
+
+/* ── LÓBULOS SECTION ── */
+.lobulos-section {
+  background: linear-gradient(180deg, transparent 0%, rgba(17, 34, 64, 0.5) 50%, transparent 100%);
+  max-width: 100%;
+  padding: 6rem 0;
+}
+
+.lobulos-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.lobes-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.lobes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.lobe-item {
+  padding: 1.2rem 1.5rem;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.25s;
+  background: var(--card-bg);
+}
+
+.lobe-item:hover,
+.lobe-item.active {
+  border-color: var(--lobe-color, var(--accent));
+  background: rgba(100, 212, 168, 0.04);
+}
+
+.lobe-item h4 {
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin-bottom: 0.3rem;
+  color: var(--lobe-color, var(--accent));
+}
+
+.lobe-item p {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+.lobe-image {
+  width: 100%;
+  max-width: 420px;
+  display: block;
+  margin: 0 auto;
+}
+
+#lobeInfoText {
+  margin-top: 1.5rem;
+  padding: 1.2rem 1.5rem;
+  background: rgba(10, 22, 40, 0.9);
+  border: 1px solid rgba(100, 212, 168, 0.2);
+  border-radius: 8px;
+}
+
+#lobeInfoText p {
+  color: rgba(232, 237, 245, 0.8);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* ── CRANIAL NERVES TABLE ── */
+.cranial-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--card-bg);
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--card-border);
+}
+
+.cranial-table thead {
+  background: rgba(100, 212, 168, 0.1);
+}
+
+.cranial-table th {
+  padding: 1rem 1.5rem;
+  text-align: left;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.cranial-table td {
+  padding: 0.9rem 1.5rem;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+  transition: background 0.2s;
+}
+
+.cranial-table tbody tr:hover td {
+  background: rgba(100, 212, 168, 0.04);
+  color: var(--text-light);
+}
+
+.cranial-table td:first-child {
+  font-weight: 500;
+  color: var(--text-light);
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.nerve-badge {
+  display: inline-block;
+  padding: 0.2rem 0.7rem;
+  border-radius: 50px;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+}
+
+.badge-s { background: rgba(100, 212, 168, 0.15); color: var(--accent); }
+.badge-m { background: rgba(201, 168, 76, 0.15);  color: var(--gold); }
+.badge-b { background: rgba(130, 100, 220, 0.15); color: #a78cda; }
+
+/* ── QUIZ ── */
+.quiz-section {
+  max-width: 800px;
+}
+
+.quiz-box {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 20px;
+  padding: 3rem;
+  text-align: center;
+}
+
+.quiz-question {
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: 1.4rem;
+  margin-bottom: 2rem;
+  color: var(--text-light);
+  line-height: 1.4;
+}
+
+.quiz-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  max-width: 600px;
+  margin: 0 auto 2rem;
+}
+
+.quiz-opt {
+  padding: 0.9rem 1.2rem;
+  border-radius: 10px;
+  border: 1px solid rgba(100, 212, 168, 0.2);
+  background: var(--navy);
+  color: var(--text-light);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: left;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.quiz-opt:hover {
+  border-color: var(--accent);
+  background: rgba(100, 212, 168, 0.06);
+}
+
+.quiz-opt.correct {
+  border-color: var(--accent);
+  background: rgba(100, 212, 168, 0.12);
+  color: var(--accent);
+}
+
+.quiz-opt.wrong {
+  border-color: #e85d5d;
+  background: rgba(232, 93, 93, 0.08);
+  color: #e85d5d;
+}
+
+.quiz-feedback {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  min-height: 1.5rem;
+  margin-bottom: 1.5rem;
+  transition: all 0.3s;
+}
+
+.quiz-next {
+  border-radius: 50px;
+  padding: 0.7rem 2rem;
+  font-size: 0.9rem;
+}
+
+/* ── FOOTER ── */
+footer {
+  border-top: 1px solid rgba(100, 212, 168, 0.1);
+  padding: 3rem 2rem;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-weight: 300;
+  line-height: 2;
+}
+
+footer span {
+  color: var(--accent);
+}
+
+.footer-copy {
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  opacity: 0.5;
+}
+
+/* ── SCROLL REVEAL ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s, transform 0.7s;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 800px) {
+  .lobes-wrapper {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .quiz-options {
+    grid-template-columns: 1fr;
+  }
+
+  .cranial-table {
+    font-size: 0.78rem;
+  }
+
+  .cranial-table th,
+  .cranial-table td {
+    padding: 0.7rem 0.9rem;
+  }
+}
